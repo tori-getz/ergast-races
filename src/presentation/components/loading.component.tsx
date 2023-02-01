@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
+    flex: 1,
   }
 })
