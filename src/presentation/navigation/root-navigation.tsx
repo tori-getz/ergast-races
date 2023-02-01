@@ -9,6 +9,7 @@ import { adaptNavigationTheme } from 'react-native-paper';
 import { CustomAppBar } from '../components/custom-app-bar.component';
 
 import { DriversPage } from '~/presentation/pages/drivers.page';
+import { DriverPage } from '../pages/driver.page';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
@@ -26,6 +27,13 @@ export const RootNavigation: React.FC = () => {
           component={DriversPage}
           options={{
             title: 'Drivers'
+          }}
+        />
+        <Screen
+          name='DriverPage'
+          component={DriverPage}
+          options={{
+            title: 'Driver'
           }}
         />
       </Navigator>

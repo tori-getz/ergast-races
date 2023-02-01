@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -6,10 +7,15 @@ import { DriversTable } from '~/presentation/components/drivers-table.component'
 
 import { Loading } from '~/presentation/components/loading.component';
 import { useDrivers } from '~/presentation/hooks/use-drivers.hook';
+import { RootStackParamList } from '../navigation/types';
 
 const ITEMS_PER_PAGE = 10;
 
-export const DriversPage: React.FC = () => {
+type DriversPageProps = StackScreenProps<RootStackParamList, 'DriversPage'>;
+
+export const DriversPage: React.FC<DriversPageProps> = ({
+  navigation
+}) => {
   const [ loading, setLoading ] = useState<boolean>(true);
 
   const [ page, setPage ] = useState<number>(0);
@@ -42,6 +48,7 @@ export const DriversPage: React.FC = () => {
   return (
     <ScrollView>
       <DriversTable
+        onSelectDriver={driver => navigation.navigate('DriverPage', { driver })}
         drivers={drivers} 
         page={page}
         numberOfItemsPerPage={ITEMS_PER_PAGE}
