@@ -18,7 +18,7 @@ export class DriverDataSourceImpl extends DriverDataSource {
     const drivers = data.MRData.DriverTable.Drivers;
     const total = parseInt(data.MRData.total);
 
-    // await DriverModel.array().parseAsync(drivers);
+    await DriverModel.array().parseAsync(drivers);
 
     return { drivers, total };
   }
