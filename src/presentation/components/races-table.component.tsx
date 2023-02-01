@@ -26,6 +26,7 @@ export const RacesTable: React.FC<RacesTableProps> = ({
         <DataTable.Row key={key}>
           <DataTable.Cell>{race.season}</DataTable.Cell>
           <DataTable.Cell>{race.round}</DataTable.Cell>
+          <DataTable.Cell>{race.raceName}</DataTable.Cell>
           <DataTable.Cell>{race.date}</DataTable.Cell>
           <DataTable.Cell>{race.Circuit.circuitName}</DataTable.Cell>
         </DataTable.Row>
