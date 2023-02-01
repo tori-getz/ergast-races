@@ -1,5 +1,4 @@
 import { useInjection } from "inversify-react";
-import { useEffect } from "react";
 import { showMessage } from "react-native-flash-message";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_DRIVERS } from "~/core/di/types";
@@ -10,18 +9,16 @@ import { RootState } from "../state/root.store";
 
 export interface UseDrivers {
   drivers: DriverEntity[]
+  total: number
   loadDrivers: (limit: number, offset: number) => Promise<void>
 }
 
 export const useDrivers = (): UseDrivers => {
   const getDriversUseCase = useInjection<GetDrivers>(GET_DRIVERS);
 
-  const drivers = useSelector<RootState>(state => state.drivers as DriverEntity[]);
+  const drivers = useSelector<RootState>(state => state.drivers.drivers);
+  const total = useSelector<RootState>(state => state.drivers.total);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    alert(drivers.length);
-  }, [drivers]);
 
   const loadDrivers = async (limit: number, offset: number): Promise<void> => {
     const driversEither = await getDriversUseCase.run({
@@ -44,6 +41,7 @@ export const useDrivers = (): UseDrivers => {
 
   return {
     drivers: drivers as DriverEntity[], // костыль, to do убрать
+    total: total as number,
     loadDrivers
   }
 }

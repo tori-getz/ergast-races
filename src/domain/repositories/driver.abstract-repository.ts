@@ -5,5 +5,5 @@ import type { DriverEntity } from "~/domain/entities/driver.entity";
 
 @injectable()
 export abstract class DriverRepository {
-  public abstract getDrivers(limit: number, offset: number): Promise<Either<Failure, DriverEntity[]>>;
+  public abstract getDrivers(limit: number, offset: number): Promise<Either<Failure, { drivers: DriverEntity[], total: number }>>;
 }

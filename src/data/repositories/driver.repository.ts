@@ -11,7 +11,7 @@ export class DriverRepositoryImpl extends DriverRepository {
   @inject(DRIVER_DATA_SOURCE)
   private readonly driverDataSource!: DriverDataSource;
 
-  public async getDrivers(limit: number, offset: number): Promise<Either<Failure, DriverEntity[]>> {
+  public async getDrivers(limit: number, offset: number): Promise<Either<Failure, { drivers: DriverEntity[], total: number }>> {
     try {
       const drivers = await this.driverDataSource.getDrivers(limit, offset);
 

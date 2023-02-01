@@ -12,11 +12,11 @@ export interface GetDriversParams {
 }
 
 @injectable()
-export class GetDrivers implements UseCase<DriverEntity[], GetDriversParams> {
+export class GetDrivers implements UseCase<{ drivers: DriverEntity[], total: number }, GetDriversParams> {
   @inject(DRIVER_REPOSITORY)
   private readonly driverRepository!: DriverRepository;
 
-  public run(params: GetDriversParams): Promise<Either<Failure, DriverEntity[]>> {
+  public run(params: GetDriversParams): Promise<Either<Failure, { drivers: DriverEntity[], total: number }>> {
     return this.driverRepository.getDrivers(params.limit, params.offset);
   }
 }

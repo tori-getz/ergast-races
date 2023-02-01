@@ -1,14 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DriverEntity } from "~/domain/entities/driver.entity";
 
-const initialState: DriverEntity[] = []; // очень не нравится, что так, должно ведь быть как то по другому. в моем случае effector подходит лучше
+export interface DriversState {
+  drivers: DriverEntity[]
+  total: number
+}
+
+const initialState: DriversState = {
+  drivers: [],
+  total: 0
+}
 
 export const driversSlice = createSlice({
   name: 'drivers',
   initialState,
   reducers: {
-    updateDrivers(_state, action: PayloadAction<DriverEntity[]>) {
-      _state = action.payload;
+    updateDrivers(state, action: PayloadAction<{ drivers: DriverEntity[], total: number }>) {
+      state.drivers = action.payload.drivers;
+      state.total = action.payload.total;
     }
   }
 });

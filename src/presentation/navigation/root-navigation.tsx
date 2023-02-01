@@ -8,7 +8,7 @@ import type { RootStackParamList } from "./types";
 import { adaptNavigationTheme } from 'react-native-paper';
 import { CustomAppBar } from '../components/custom-app-bar.component';
 
-import { DriversPage } from '~/presentation/pages/drivers/drivers.page';
+import { DriversPage } from '~/presentation/pages/drivers.page';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
