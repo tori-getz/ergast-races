@@ -21,5 +21,13 @@ module.exports = {
         },
       },
     ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env'
+      }
+    ],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
   ],
 };
