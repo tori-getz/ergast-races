@@ -15,7 +15,7 @@ export const driversSlice = createSlice({
   name: 'drivers',
   initialState,
   reducers: {
-    updateDrivers(state, action: PayloadAction<{ drivers: DriverEntity[], total: number }>) {
+    updateDrivers(state, action: PayloadAction<DriversState>) {
       state.drivers = action.payload.drivers;
       state.total = action.payload.total;
     }

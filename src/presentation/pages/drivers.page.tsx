@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { ScrollView } from 'react-native';
+import { Button } from 'react-native-paper';
 import { DriversTable } from '~/presentation/components/drivers-table.component';
 
 import { Loading } from '~/presentation/components/loading.component';
@@ -17,10 +18,7 @@ export const DriversPage: React.FC<DriversPageProps> = ({
   navigation
 }) => {
   const [ loading, setLoading ] = useState<boolean>(true);
-
   const [ page, setPage ] = useState<number>(0);
-
-  const [ offset, setOffset ] = useState<number>(0);
 
   const {
     drivers,
@@ -32,7 +30,7 @@ export const DriversPage: React.FC<DriversPageProps> = ({
     setLoading(true);
     
     const limit = ITEMS_PER_PAGE;
-    const offset = page * ITEMS_PER_PAGE;
+    const offset = page * limit;
 
     loadDrivers(limit, offset).then(() => {
       setLoading(false);
@@ -55,6 +53,13 @@ export const DriversPage: React.FC<DriversPageProps> = ({
         numberOfPages={total / ITEMS_PER_PAGE}
         onPageChange={setPage}
       />
+      <Button
+        mode='contained-tonal'
+        icon='flag'
+        onPress={() => navigation.navigate('RacesPage')}
+      >
+        Races
+      </Button>
     </ScrollView>
   )
 }

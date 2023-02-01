@@ -10,6 +10,7 @@ import { CustomAppBar } from '../components/custom-app-bar.component';
 
 import { DriversPage } from '~/presentation/pages/drivers.page';
 import { DriverPage } from '../pages/driver.page';
+import { RacesPage } from '../pages/races.page';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
@@ -34,6 +35,13 @@ export const RootNavigation: React.FC = () => {
           component={DriverPage}
           options={{
             title: 'Driver'
+          }}
+        />
+        <Screen
+          name='RacesPage'
+          component={RacesPage}
+          options={{
+            title: 'Races'
           }}
         />
       </Navigator>

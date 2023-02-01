@@ -3,7 +3,7 @@ import React from "react"
 import type { StackScreenProps } from "@react-navigation/stack"
 import type { RootStackParamList } from "../navigation/types"
 import { List } from "react-native-paper"
-import { Linking, View } from "react-native"
+import { Linking, ScrollView } from "react-native"
 
 type DriverPageProps = StackScreenProps<RootStackParamList, 'DriverPage'>
 
@@ -15,7 +15,7 @@ export const DriverPage: React.FC<DriverPageProps> = ({
   }
 }) => {
   return (
-    <View>
+    <ScrollView>
       <List.Item
         title='Driver name'
         description={`${driver.familyName} ${driver.givenName}`}
@@ -40,6 +40,6 @@ export const DriverPage: React.FC<DriverPageProps> = ({
         onPress={() => Linking.openURL(driver.url)}
         right={props => <List.Icon icon='arrow-right' {...props} />}
       />
-    </View>
+    </ScrollView>
   )
 }
